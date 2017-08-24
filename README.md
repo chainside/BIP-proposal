@@ -12,12 +12,14 @@
 </pre>
 
 == Abstract ==
+
 This BIP defines a logical istructure for hierarhical deterministic multisig
 wallets based on the algorithm described in BIP-0032 (BIP32 from now on) and
 purpose scheme described in BIP-0043 (BIP43 from now on). This BIP is a
 particular application of BIP43.
 
 == Motivation ==
+
 The structure described in this document allows different parties to agree on
 a standard way to independently create multisig P2SH addresses between them.
 A similar structure has been proposed in the past for such need (BIP-0045)
@@ -37,6 +39,7 @@ exploiting the potentiality of having an HD structure (i.e. having to backup
 only one secret for many purposes/accounts)
 
 == Specification ==
+
 The proposed structure is as follows:
 <pre>
 m / purpose' / coin_type' / account' / cosigner_index / change / address_index
@@ -47,6 +50,7 @@ Apostrophe in the path indicates that hardened derivation described in BIP32 is 
 Each level has special meaning described in the following chapters.
 
 === Purpose ===
+
 Purpose is a constant set to [whatever number this BIP will be assigned]',
 following the BIP43 recommendation.
 
@@ -59,6 +63,7 @@ It indicates that the subtree of this node is used according to this specificati
 Hardened derivation is used at this level.
 
 === Coin type ===
+
 Due to the generic structure of this proposal, the keys generated following this BIP,
 can be used on different cryptocurrencies.
 
@@ -69,6 +74,7 @@ of this subtree are used. The list of already allocated coin types is in the cha
 Hardened derivation is used at this level.
 
 === Account ===
+
 This level splits the key space into independent multisig accounts, so the wallet never
 mixes the coins across different accounts.
 For instance, if user A wants to have a 2-of-2 multisig account with user B and also a 2-of-3
@@ -86,6 +92,7 @@ Such an algorithm is described in "Address discovery" chapter.
 Hardened derivation is used at this level.
 
 === Cosigner index ===
+
 As described in BIP45, this is the index of the party creating a P2SH multisig address.
 The indices can be determined independently by lexicographically sorting the account public
 keys of each cosigner. Each cosigner creates addresses on it's own branch, even though
@@ -102,6 +109,7 @@ Software needs to discover all used indices when importing the seed from an exte
 Such algorithm is described in the "Address discovery" chapter.
 
 === Change ===
+
 Constant 0 is used for external chain and constant 1 for internal chain (also known as
 change addresses). External chain is used for addresses that are meant to be visible outside
 of the wallet (e.g. for receiving payments). Internal chain is used for addresses which
@@ -113,10 +121,12 @@ addresses to receive change, without exceeding the gap limit. This will be furth
 clarified in the "Address discovery" section.
 
 === Address index ===
+
 This is the level where actual addresses are generated. Addresses are numbered from index
 0 in sequentially increasing manner.
 
 === Address generation ===
+
 As described in BIP45, on account setup, each party has their own extended master
 keypair, derives a new account for the multisig wallet from the account' level and shares
 the extended account' public key with the others, which is stored encrypted. Each party
@@ -160,6 +170,7 @@ He uses these paths to generate a public key for each cosigner, and from that he
 P2SH address.
 
 ====Change address case====
+
 Again, each cosigner generates addresses only on his own branch. One of the
 N cosigners wants to create an outgoing payment, for which he'll need a change
 address. He generates a new address using the same procedure as above, but
@@ -169,9 +180,11 @@ The procedure is the same as described in the preceeding section but index 1 wil
 for the change branch instead of 0.
 
 === Transaction signing ===
+
 The signing of transactions can be done exactly as described in BIP45.
 
 === Address discovery ===
+
 As similarly described in BIP45, when the master seed and the account roots
 of the cosigners are imported from an external source,
 the software should start to discover the addresses in the following manner:
@@ -187,6 +200,7 @@ Opposite to BIP44, as described in BIP45, each cosigner branch needs to be check
 even if the earlier ones don't have transactions.
 
 == Address gap limit ==
+
 Address gap limit is currently set to 20. If the software hits 20 unused 
 addresses (no transactions associated with that address) in a row, it expects
 there are no used addresses beyond this point and stops searching the address chain.
@@ -195,9 +209,11 @@ Wallet software should warn when user is trying to exceed the gap limit on
 an external chain by generating a new address.
 
 == Registered coin types ==
+
 ...
 
 == Reference ==
+
 * [[bip-0032.mediawiki|BIP32 - Hierarchical Deterministic Wallets]]
 * [[bip-0043.mediawiki|BIP43 - Purpose Field for Deterministic Wallets]]
 * [[bip-0044.mediawiki|BIP32 - Multi-Account Hierarchy for Deterministic Wallets]]
