@@ -51,7 +51,7 @@ Each level has special meaning described in the following chapters.
 ===Levels description===
 ====Purpose====
 
-Purpose is a constant set to \[whatever number this BIP will be assigned\]',
+Purpose is a constant set to <code>[whatever number this BIP will be assigned]'</code>,
 following the BIP43 recommendation.
 
 <pre>
