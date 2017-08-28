@@ -25,12 +25,17 @@ purpose scheme described in BIP-0043 (BIP43 from now on).
 The structure described in this document allows different parties to agree on
 a standard way to independently create multisig P2SH addresses among them.
 A similar structure has been proposed in the past for such need (BIP-0045)
-but that structure has some disadvantages that this BIP aims at solving.
+but that structure has some disadvantages
+([[https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-October/011356.html|
+described in this email and the subsequent discussion]]) that this BIP aims at solving.
 
 In fact, when used in a multi-account fashion, BIP45 structure presents
 the following limits:
-* The same keys are reused when multisig addresses are created by different parties for different accounts, resulting in a loss of privacy. This happens because BIP45 does not allow to separate different accounts.
-* Tracking different accounts that create multisig addresses in this way can be particularly complex
+* The same keys are reused when multisig addresses are created by different parties
+for different accounts, resulting in a loss of privacy. This happens because BIP45
+does not allow to separate different accounts.
+* Tracking different accounts that create multisig addresses in this way can be
+particularly complex
 
 The other option would be using different master keys for every multisig accounts
 but this would mean having to backup many master seeds, hence non fully
