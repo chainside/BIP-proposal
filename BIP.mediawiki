@@ -15,15 +15,15 @@
 
 ==Abstract==
 
-This BIP defines a logical istructure for hierarhical deterministic multisig
-wallets based on the algorithm described in BIP-0032 (BIP32 from now on) and
-purpose scheme described in BIP-0043 (BIP43 from now on). This BIP is a
-particular application of BIP43.
+This BIP defines a logical structure for hierarchical deterministic multisig
+wallets that allow for a robust and privacy-aware multiaccount management, 
+based on the algorithm described in BIP-0032 (BIP32 from now on) and
+purpose scheme described in BIP-0043 (BIP43 from now on).
 
 ==Motivation==
 
 The structure described in this document allows different parties to agree on
-a standard way to independently create multisig P2SH addresses between them.
+a standard way to independently create multisig P2SH addresses among them.
 A similar structure has been proposed in the past for such need (BIP-0045)
 but that structure has some disadvantages that this BIP aims at solving.
 
@@ -51,7 +51,7 @@ Each level has special meaning described in the following chapters.
 ===Levels description===
 ====Purpose====
 
-Purpose is a constant set to [whatever number this BIP will be assigned]',
+Purpose is a constant set to \[whatever number this BIP will be assigned\]',
 following the BIP43 recommendation.
 
 <pre>
