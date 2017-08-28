@@ -4,6 +4,8 @@
   Title: Multi-Account Hierarchy for Multisignature Deterministic Wallets
   Author: Simone Bronzini <simone.bronzini@chainside.net>
           Federico Tenga <federico@chainside.net>
+          Lorenzo Giustozzi <lorenzo.giustozzi@chainside.net>
+          Gianluca De Cicco <gianluca.decicco@chainside.net>
   comments-URI: ...
   Status: Proposed
   Type: Standards Track
@@ -185,19 +187,18 @@ The signing of transactions can be done exactly as described in BIP45.
 
 As similarly described in BIP45, when the master seed and the account roots
 of the cosigners are imported from an external source,
-the software should start to discover the addresses in the following manner:
+the software should start to discover the addresses in the following manner.
 
-# for each cosigner:
-## derive the cosigner's node (m / ????' / BTC' / cosigner's account root' / cosigner_index`)
-## for both the external and internal chains on this node (m / ????' / BTC' / cosigner's account root / cosigner_index / 0 and m / ????' / BTC' / cosigner's account root / cosigner_index / 0):
-### scan addresses of the chain; respect the gap limit described below
+For each cosigner:
+# derive the cosigner's node (<code>m / ????' / BTC' / cosigner's account root' / cosigner_index</code>)
+# for both the external and internal chains on this node (<code>m / ????' / BTC' / cosigner's account root / cosigner_index / 0</code> and <code>m / ????' / BTC' / cosigner's account root / cosigner_index / 0</code>) scan addresses of the chain; respect the gap limit described below
 
 Please note that the algorithm uses the transaction history, not address balances,
 so even if the address has 0 coins, the program should continue with discovery.
 Opposite to BIP44, as described in BIP45, each cosigner branch needs to be checked,
 even if the earlier ones don't have transactions.
 
-==Address gap limit==
+====Address gap limit====
 
 Address gap limit is currently set to 20. If the software hits 20 unused 
 addresses (no transactions associated with that address) in a row, it expects
@@ -213,7 +214,7 @@ at the following page: [[https://github.com/satoshilabs/slips/blob/master/slip-0
 
 ==Reference==
 
-* [[bip-0032.mediawiki|BIP32 - Hierarchical Deterministic Wallets]]
-* [[bip-0043.mediawiki|BIP43 - Purpose Field for Deterministic Wallets]]
-* [[bip-0044.mediawiki|BIP32 - Multi-Account Hierarchy for Deterministic Wallets]]
-* [[bip-0045.mediawiki|BIP43 - Structure for Deterministic P2SH Multisignature Wallets]]
+* [[https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki|BIP32 - Hierarchical Deterministic Wallets]]
+* [[https://github.com/bitcoin/bips/blob/master/bip-0043.mediawiki|BIP43 - Purpose Field for Deterministic Wallets]]
+* [[https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki|BIP32 - Multi-Account Hierarchy for Deterministic Wallets]]
+* [[https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki|BIP43 - Structure for Deterministic P2SH Multisignature Wallets]]
