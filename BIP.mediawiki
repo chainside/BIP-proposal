@@ -49,7 +49,8 @@ Apostrophe in the path indicates that hardened derivation described in BIP32 is 
 
 Each level has special meaning described in the following chapters.
 
-===Purpose===
+===Levels description===
+====Purpose====
 
 Purpose is a constant set to [whatever number this BIP will be assigned]',
 following the BIP43 recommendation.
@@ -62,7 +63,7 @@ It indicates that the subtree of this node is used according to this specificati
 
 Hardened derivation is used at this level.
 
-===Coin type===
+====Coin type====
 
 Due to the generic structure of this proposal, the keys generated following this BIP,
 can be used on different cryptocurrencies.
@@ -73,7 +74,7 @@ of this subtree are used. The list of already allocated coin types is in the cha
 
 Hardened derivation is used at this level.
 
-===Account===
+====Account====
 
 This level splits the key space into independent multisig accounts, so the wallet never
 mixes the coins across different accounts.
@@ -91,7 +92,7 @@ Such an algorithm is described in "Address discovery" chapter.
 
 Hardened derivation is used at this level.
 
-===Cosigner index===
+====Cosigner index====
 
 As described in BIP45, this is the index of the party creating a P2SH multisig address.
 The indices can be determined independently by lexicographically sorting the account public
@@ -108,7 +109,7 @@ For example, for a 2-of-3 HDPM wallet, having the following purpose public keys:
 Software needs to discover all used indices when importing the seed from an external source.
 Such algorithm is described in the "Address discovery" chapter.
 
-===Change===
+====Change====
 
 Constant 0 is used for external chain and constant 1 for internal chain (also known as
 change addresses). External chain is used for addresses that are meant to be visible outside
@@ -120,7 +121,7 @@ but have not received transactions yet, this will always allow to be able to gen
 addresses to receive change, without exceeding the gap limit. This will be further
 clarified in the "Address discovery" section.
 
-===Address index===
+====Address index====
 
 This is the level where actual addresses are generated. Addresses are numbered from index
 0 in sequentially increasing manner.
@@ -210,7 +211,8 @@ an external chain by generating a new address.
 
 ==Registered coin types==
 
-...
+As registered coin types we propose the ones already used for BIP44, which can be found
+at the following page: [[https://github.com/satoshilabs/slips/blob/master/slip-0044.md]].
 
 ==Reference==
 
