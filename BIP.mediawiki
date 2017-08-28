@@ -213,7 +213,7 @@ an external chain by generating a new address.
 ==Registered coin types==
 
 As registered coin types we propose the ones already used for BIP44, which can be found
-at the following page: [[https://github.com/satoshilabs/slips/blob/master/slip-0044.md]].
+[[https://github.com/satoshilabs/slips/blob/master/slip-0044.md|at the following page]].
 
 ==Reference==
 
