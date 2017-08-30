@@ -7,7 +7,7 @@
           Lorenzo Giustozzi <lorenzo.giustozzi@chainside.net>
           Gianluca De Cicco <gianluca.decicco@chainside.net>
   comments-URI: ...
-  Status: Proposed
+  Status: Draft
   Type: Standards Track
   Created: 2017-08-24
   License: GNU-All-Permissive
@@ -212,8 +212,14 @@ an external chain by generating a new address.
 
 ==Registered coin types==
 
-As registered coin types we propose the ones already used for BIP44, which can be found
-[[https://github.com/satoshilabs/slips/blob/master/slip-0044.md|at the following page]].
+As registered coin types we propose the ones listed in [[https://github.com/satoshilabs/slips/blob/master/slip-0044.md|SLIP44]].
+
+==Backwards compatibility==
+
+This BIP is not backwards compatible by design. A not compatible wallet will
+not discover accounts at all and the user will notice that something is wrong.
+However, this BIP guarantees no possible clash with other tree structures that
+follow BIP43.
 
 ==Reference==
 
@@ -221,3 +227,6 @@ As registered coin types we propose the ones already used for BIP44, which can b
 * [[https://github.com/bitcoin/bips/blob/master/bip-0043.mediawiki|BIP43 - Purpose Field for Deterministic Wallets]]
 * [[https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki|BIP32 - Multi-Account Hierarchy for Deterministic Wallets]]
 * [[https://github.com/bitcoin/bips/blob/master/bip-0045.mediawiki|BIP43 - Structure for Deterministic P2SH Multisignature Wallets]]
+
+== Copyright ==
+This document is placed under the GNU All-Permissive License
