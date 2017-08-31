@@ -32,13 +32,18 @@ described in this email and the subsequent discussion]]) that this BIP aims at s
 In fact, when used in a multi-account fashion, BIP45 structure presents
 the following limits:
 * The same keys are reused when multisig addresses are created by different parties for different accounts, resulting in a loss of privacy. This happens because BIP45 does not allow to separate different accounts.
-* Tracking different accounts that create multisig addresses in this way can be
-particularly complex
+* Tracking different accounts that create multisig addresses in this way can be particularly complex
 
 The other option would be using different master keys for every multisig accounts
 but this would mean having to backup many master seeds, hence non fully
 exploiting the potentiality of having an HD structure (i.e. having to backup
 only one secret for many purposes/accounts)
+
+Having an effective and privacy-aware way to manage multiple multi-sig accounts 
+is particulary important for Lightning Network applications. While previously
+multi-account multi-sig wallets had limited use cases and were little used, now we
+can expect more users to create several payments channels, requiring better
+multiaccount management.
 
 ==Specification==
 
